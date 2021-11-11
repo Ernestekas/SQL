@@ -54,6 +54,22 @@ ALTER TABLE [dbo].[employees]
     ADD [departmentId] INT
 GO
 
+UPDATE [dbo].[employees]
+SET
+    [departmentId] = 1
+WHERE [firstName] = 'John'
+GO
+
+UPDATE [dbo].[employees]
+SET
+    [departmentId] = 2
+WHERE [firstName] = 'Julie'
+GO
+
 ALTER TABLE [dbo].[employees]
 ADD FOREIGN KEY (departmentId) REFERENCES [dbo].[Departments](departmentId);
+
+DELETE FROM [dbo].[Departments]
+WHERE [name] = 'HR';
+-- Can't delete, because departmentId is Referenced in another table.
 
